@@ -27,6 +27,15 @@ h4 {
   position: relative;
   width: fit-content;
 
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 40px;
+
   background: linear-gradient(to right, $main, $dark-main);
   background-size: 100% 15%;
   background-position: 0% 87%;
@@ -38,14 +47,6 @@ h4 {
   }
 }
 
-h1 {
-  font-size: 50px;
-}
-
-h2 {
-  font-size: 40px;
-}
-
 h3 {
   font-size: 30px;
 }
@@ -54,6 +55,7 @@ h3 {
   p {
     font-size: 14px;
   }
+
   h1,
   h2,
   h3,
