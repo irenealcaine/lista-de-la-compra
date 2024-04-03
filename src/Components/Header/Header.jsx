@@ -46,9 +46,8 @@ const Header = () => {
             <li key={navbarItem.slug} onClick={() => setIsMenuClosed(true)}>
               <Link
                 to={`/${navbarItem.slug}`}
-                className={`navigation-item  ${darkMode ? "dark" : ""} ${
-                  location.pathname === `/${navbarItem.slug}` && "active"
-                }`}
+                className={`navigation-item  ${darkMode ? "dark" : ""} ${location.pathname === `/${navbarItem.slug}` && "active"
+                  }`}
               >
                 <span className={`navigation-item-name ${menuActiveClass}`}>
                   {navbarItem.name}
@@ -62,7 +61,7 @@ const Header = () => {
         </ul>
       </nav>
       <div className={`color-options ${menuActiveClass}`}>
-        <div
+        {/* <div
           className="color-option"
           onClick={() => dispatch({ type: "LIGHT" })}
         >
@@ -73,7 +72,7 @@ const Header = () => {
           onClick={() => dispatch({ type: "DARK" })}
         >
           ⚫
-        </div>
+        </div> */}
         <div
           className="color-option"
           onClick={() => dispatch({ type: "TOGGLE" })}
