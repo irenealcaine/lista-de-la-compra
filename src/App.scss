@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;700;900&family=Poppins:wght@200;400;700;900&display=swap");
+@import "src/Variables.scss";
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Mulish", sans-serif;
+  font-weight: 900;
+  margin: 15px 0;
+  position: relative;
+  width: fit-content;
+
+  background: linear-gradient(to right, $main, $dark-main);
+  background-size: 100% 15%;
+  background-position: 0% 87%;
+  background-repeat: no-repeat;
+  transition: $transition;
+
+  &:hover {
+    background-size: 250% 100%;
+  }
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  p {
+    font-size: 14px;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 10px 0;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+}

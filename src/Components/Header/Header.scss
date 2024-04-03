@@ -1,0 +1,146 @@
+@import "src/Variables.scss";
+
+header {
+  background: linear-gradient($main 70%, $dark-main);
+  border-right: 2px solid $dark-main;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  height: 100vh;
+  position: sticky;
+  width: $header-width;
+  z-index: 100;
+
+  left: 0;
+  top: 0;
+  padding: 10px;
+  padding-bottom: 30px;
+
+  transition: $transition;
+
+  .logo-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .logo {
+      border-radius: 100rem;
+      border: 2px solid $dark-main;
+      transition: $transition;
+
+      &.dark {
+        border: 2px solid $main;
+      }
+    }
+  }
+
+  &.closed {
+    width: $header-width-closed;
+
+    .logo-link {
+      .logo {
+        width: calc($header-width-closed - 10px);
+      }
+    }
+  }
+
+  &.dark {
+    background: linear-gradient($dark-main 70%, $main);
+    border-right: 2px solid $main;
+  }
+
+  .logo-link {
+    .logo {
+      width: calc($header-width / 2);
+    }
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+
+    .navigation-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin: 0 10px;
+
+      .navigation-item-name {
+        &.closed {
+          display: none;
+        }
+      }
+      .navigation-item-icon {
+        font-size: 1.5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &.active {
+        font-weight: 700;
+        color: $dark-main;
+
+        &.dark {
+          color: $main;
+        }
+      }
+    }
+  }
+
+  .menu-toggle {
+    cursor: pointer;
+    position: absolute;
+    top: 50px;
+    right: -15px;
+    background-color: $main;
+    border: 2px solid $dark-main;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    transform: rotate(180deg);
+    transition: $transition;
+
+    &.dark {
+      background-color: $dark-main;
+      border: 2px solid $main;
+    }
+
+    &.closed {
+      transform: rotate(0deg);
+    }
+  }
+
+  .color-options {
+    margin-top: 50px;
+    display: flex;
+    gap: 10px;
+
+    &.closed {
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .color-option {
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    position: fixed;
+  }
+}

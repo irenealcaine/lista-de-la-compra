@@ -1,0 +1,97 @@
+@import "src/Variables.scss";
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 3px solid;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  margin: 5px;
+
+  border-color: transparent $dark-main $main transparent;
+
+  &::after,
+  &::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: 3px solid;
+    border-radius: 50%;
+    transform-origin: center center;
+    border-color: transparent $dark-main $main transparent;
+  }
+
+  &::after {
+    width: 40px;
+    height: 40px;
+    animation: rotation 2s linear infinite;
+  }
+
+  &::before {
+    width: 32px;
+    height: 32px;
+    animation: rotation 4s linear infinite;
+  }
+
+  &.blue {
+    border-color: transparent $dark-blue $blue transparent;
+
+    &::after {
+      border-color: transparent $dark-blue $blue transparent;
+    }
+    &::before {
+      border-color: transparent $dark-blue $blue transparent;
+    }
+  }
+
+  &.green {
+    border-color: transparent $dark-green $green transparent;
+
+    &::after {
+      border-color: transparent $dark-green $green transparent;
+    }
+    &::before {
+      border-color: transparent $dark-green $green transparent;
+    }
+  }
+
+  &.red {
+    border-color: transparent $dark-red $red transparent;
+
+    &::after {
+      border-color: transparent $dark-red $red transparent;
+    }
+    &::before {
+      border-color: transparent $dark-red $red transparent;
+    }
+  }
+
+  &.purple {
+    border-color: transparent $dark-purple $purple transparent;
+
+    &::after {
+      border-color: transparent $dark-purple $purple transparent;
+    }
+    &::before {
+      border-color: transparent $dark-purple $purple transparent;
+    }
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

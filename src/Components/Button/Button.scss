@@ -1,0 +1,187 @@
+@import "src/Variables.scss";
+
+.button {
+  padding: 5px 25px;
+  border-radius: 5px;
+  transition: $transition;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 5px;
+  min-width: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(145deg, $main, $dark-main);
+  background-size: 100% 300%;
+  background-position: 0% 0%;
+  border: 2px solid $dark-main;
+  color: $dark-main;
+
+  transition: $transition;
+
+  &:hover {
+    border: 2px solid $main;
+    color: $main;
+    text-decoration: underline;
+    background-position: 0% 100%;
+  }
+
+  &.dark {
+    border: 2px solid $main;
+    color: $main;
+    background-position: 0% 100%;
+
+    &:hover {
+      background-position: 0% 0%;
+      border: 2px solid $dark-main;
+      color: $dark-main;
+    }
+  }
+
+  &.secondary {
+    background: transparent;
+    border: 2px solid $dark-main;
+    color: $dark-main;
+
+    &:hover {
+      border: 2px solid $main;
+    }
+
+    &.dark {
+      border: 2px solid $main;
+      color: $main;
+
+      &:hover {
+        background-color: transparent;
+        border: 2px solid $dark-main;
+      }
+    }
+  }
+
+  &.blue {
+    background: linear-gradient(145deg, $blue, $dark-blue);
+    background-size: 100% 300%;
+    background-position: 0% 0%;
+    border: 2px solid $dark-blue;
+    color: $dark-blue;
+
+    &:hover {
+      background-position: 0% 100%;
+      border: 2px solid $blue;
+      color: $blue;
+    }
+
+    &.dark {
+      background-position: 0% 100%;
+      border: 2px solid $blue;
+      color: $blue;
+
+      &:hover {
+        background-position: 0% 0%;
+        border: 2px solid $dark-blue;
+        color: $dark-blue;
+      }
+    }
+  }
+
+  &.green {
+    background: linear-gradient(145deg, $green, $dark-green);
+    background-size: 100% 300%;
+    background-position: 0% 0%;
+    border: 2px solid $dark-green;
+    color: $dark-green;
+
+    &:hover {
+      background-position: 0% 100%;
+      border: 2px solid $green;
+      color: $green;
+    }
+
+    &.dark {
+      background-position: 0% 100%;
+      border: 2px solid $green;
+      color: $green;
+
+      &:hover {
+        background-position: 0% 0%;
+        border: 2px solid $dark-green;
+        color: $dark-green;
+      }
+    }
+  }
+
+  &.purple {
+    background: linear-gradient(145deg, $purple, $dark-purple);
+    background-size: 100% 300%;
+    background-position: 0% 0%;
+    border: 2px solid $dark-purple;
+    color: $dark-purple;
+
+    &:hover {
+      background-position: 0% 100%;
+      border: 2px solid $purple;
+      color: $purple;
+    }
+
+    &.dark {
+      background-position: 0% 100%;
+      border: 2px solid $purple;
+      color: $purple;
+
+      &:hover {
+        background-position: 0% 0%;
+        border: 2px solid $dark-purple;
+        color: $dark-purple;
+      }
+    }
+  }
+
+  &.red {
+    background: linear-gradient(145deg, $red, $dark-red);
+    background-size: 100% 300%;
+    background-position: 0% 0%;
+    border: 2px solid $dark-red;
+    color: $dark-red;
+
+    &:hover {
+      background-position: 0% 100%;
+      border: 2px solid $red;
+      color: $red;
+    }
+
+    &.dark {
+      background-position: 0% 100%;
+      border: 2px solid $red;
+      color: $red;
+
+      &:hover {
+        background-position: 0% 0%;
+        border: 2px solid $dark-red;
+        color: $dark-red;
+      }
+    }
+  }
+
+  &.disabled {
+    background: rgba(128, 128, 128, 0.5);
+    border: 2px solid rgba(128, 128, 128, 0.5);
+    color: rgba(128, 128, 128, 0.8);
+    cursor: auto;
+    text-decoration: none;
+
+    &:hover {
+      border: 2px solid rgba(128, 128, 128, 0.5);
+      color: rgba(128, 128, 128, 0.8);
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    font-size: 14px;
+    padding: 5px 15px;
+  }
+}
