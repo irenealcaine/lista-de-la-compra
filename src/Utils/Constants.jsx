@@ -1,11 +1,12 @@
 import { PiAddressBookBold, PiAlarmBold } from "react-icons/pi";
 import { CgDatabase, CgTrello } from "react-icons/cg";
+import { CiViewList } from "react-icons/ci";
 
 export const navbarItems = [
   {
-    name: "Page 1",
-    slug: "page1",
-    icon: <PiAddressBookBold />,
+    name: "Lista de la compra",
+    slug: "lista-de-la-compra",
+    icon: <CiViewList />,
   },
   // {
   //   name: "Page 2",
