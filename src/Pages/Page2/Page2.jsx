@@ -1,3 +1,4 @@
+import Button from "../../Components/Button/Button";
 import Select from "../../Components/Select/Select";
 import TextInput from "../../Components/TextInput/TextInput";
 import "./Page2.scss";
@@ -6,12 +7,16 @@ const Page2 = () => {
 
   const options = [
     {
-      label: 'aaaaaaa',
-      value: 'aaaaaa'
+      label: 'aaa',
+      value: 'aaa'
     },
     {
       label: 'bbb',
-      value: 'bbbbbbb'
+      value: 'bbb'
+    },
+    {
+      label: 'ccc',
+      value: 'ccc'
     },
   ]
   return (
@@ -21,6 +26,7 @@ const Page2 = () => {
       <TextInput />
       <p>Categoría</p>
       <Select options={options} />
+      <Button value={'Agregar'} />
     </div>
   );
 };

@@ -1,10 +1,14 @@
 @import "src/Variables.scss";
 
-input {
+select {
   background-color: transparent;
   color: inherit;
   outline: none;
   border: 2px solid $main;
   padding: 5px 10px;
   border-radius: 10px;
+
+  option {
+    background-color: $dark;
+  }
 }
