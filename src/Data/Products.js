@@ -5,12 +5,22 @@ export const products = [
     items: [
       {
         id: 1,
-        name: 'Aceite',
+        name: 'Aceite de oliva',
         toBuy: false
       },
       {
         id: 2,
+        name: 'Aceite de girasol',
+        toBuy: true
+      },
+      {
+        id: 3,
         name: 'Sal',
+        toBuy: true
+      },
+      {
+        id: 2,
+        name: 'Azúcar',
         toBuy: true
       },
     ]
