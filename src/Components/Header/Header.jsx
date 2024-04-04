@@ -76,7 +76,7 @@ const Header = () => {
           ⚫
         </div> */}
         <div
-          className="color-option"
+          className={`color-option ${darkMode ? "dark" : ""}`}
           onClick={() => dispatch({ type: "TOGGLE" })}
         >
           {darkMode ? <MdOutlineWbSunny /> : <FiMoon />}
