@@ -8,12 +8,12 @@ const Home = () => {
       <h1>¿Qué hace falta?</h1>
 
       {products.map((category) => (
-        <div>
+        <div key={category.id}>
           <h2>{category.title}</h2>
 
           <ul>
             {category.items.map((item) => (
-              <li>
+              <li key={item.id}>
                 <Checkbox isChecked={item.toBuy} />
                 {item.name}
               </li>
