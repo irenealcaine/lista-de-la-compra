@@ -1,4 +1,5 @@
 import React from 'react'
+import './Checkbox.scss'
 
 const Checkbox = ({ isChecked }) => {
   return (
