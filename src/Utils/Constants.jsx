@@ -1,6 +1,8 @@
 import { PiAddressBookBold, PiAlarmBold } from "react-icons/pi";
 import { CgDatabase, CgTrello } from "react-icons/cg";
 import { CiViewList } from "react-icons/ci";
+import { FaPlus } from "react-icons/fa6";
+import { FaRegUser } from "react-icons/fa";
 
 export const navbarItems = [
   {
@@ -8,16 +10,16 @@ export const navbarItems = [
     slug: "lista-de-la-compra",
     icon: <CiViewList />,
   },
-  // {
-  //   name: "Page 2",
-  //   slug: "page2",
-  //   icon: <PiAlarmBold />,
-  // },
-  // {
-  //   name: "Page 3",
-  //   slug: "page3",
-  //   icon: <CgDatabase />,
-  // },
+  {
+    name: "Agregar elemento",
+    slug: "agregar-elemento",
+    icon: <FaPlus />,
+  },
+  {
+    name: "Perfil",
+    slug: "perfil",
+    icon: <FaRegUser />,
+  },
   // {
   //   name: "Page 4",
   //   slug: "page4",

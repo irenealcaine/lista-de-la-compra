@@ -6,6 +6,8 @@ import { navbarItems } from "../../Utils/Constants";
 import { useState } from "react";
 import { BiSolidRightArrow } from "react-icons/bi";
 import { DarkModeContext } from "../../Context/darkModeContext";
+import { MdOutlineWbSunny } from "react-icons/md";
+import { FiMoon } from "react-icons/fi";
 
 const Header = () => {
   const location = useLocation();
@@ -77,7 +79,7 @@ const Header = () => {
           className="color-option"
           onClick={() => dispatch({ type: "TOGGLE" })}
         >
-          {darkMode ? "☀️" : "🌙"}
+          {darkMode ? <MdOutlineWbSunny /> : <FiMoon />}
         </div>
       </div>
     </header>

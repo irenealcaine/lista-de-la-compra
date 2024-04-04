@@ -17,8 +17,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/lista-de-la-compra" element={<Page1 />} />
-            <Route path="/page2" element={<Page2 />} />
-            <Route path="/page3" element={<Page3 />} />
+            <Route path="/agregar-elemento" element={<Page2 />} />
+            <Route path="/perfil" element={<Page3 />} />
             <Route path="/page4" element={<Page4 />} />
           </Routes>
         </Main>
