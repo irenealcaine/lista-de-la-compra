@@ -4,7 +4,7 @@ import Button from '../../Components/Button/Button'
 
 import React, { useState } from 'react'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const IniciarSesion = () => {
 
