@@ -3,7 +3,7 @@ import './TextInput.scss'
 
 const TextInput = ({ type, placeholder }) => {
   return (
-    <input type={type} placeholder={placeholder} />
+    <input className='text-input' type={type} placeholder={placeholder} />
   )
 }
 
