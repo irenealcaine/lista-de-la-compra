@@ -18,13 +18,13 @@ function App() {
         <BrowserRouter>
           <Main>
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="*" element={<NotFound />} />
-              <Route path="/lista-de-la-compra" element={<Page1 />} />
+              <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+              <Route path="/lista-de-la-compra" element={<ProtectedRoute><Page1 /></ProtectedRoute>} />
               <Route path="/agregar-elemento" element={<ProtectedRoute><Page2 /></ProtectedRoute>} />
-              <Route path="/perfil" element={<Page3 />} />
-              <Route path="/page4" element={<Page4 />} />
+              <Route path="/perfil" element={<ProtectedRoute><Page3 /></ProtectedRoute>} />
+              {/* <Route path="/page4" element={<Page4 />} /> */}
               <Route path="/iniciar-sesion" element={<IniciarSesion />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Main>
         </BrowserRouter>
