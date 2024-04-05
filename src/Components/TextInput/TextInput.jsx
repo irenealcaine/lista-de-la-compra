@@ -1,9 +1,9 @@
 import React from 'react'
 import './TextInput.scss'
 
-const TextInput = () => {
+const TextInput = ({ type, placeholder }) => {
   return (
-    <input type='text' />
+    <input type={type} placeholder={placeholder} />
   )
 }
 

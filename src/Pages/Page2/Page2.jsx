@@ -7,6 +7,11 @@ const Page2 = () => {
 
   const options = [
     {
+      label: 'Categoría',
+      value: '',
+      hidden: true
+    },
+    {
       label: 'aaa',
       value: 'aaa'
     },
@@ -20,13 +25,13 @@ const Page2 = () => {
     },
   ]
   return (
-    <div className="page2">
+    <div className="agregar-elemento">
       <h1>Agregar elemento</h1>
-      <p>Nombre</p>
-      <TextInput />
-      <p>Categoría</p>
-      <Select options={options} />
-      <Button value={'Agregar'} />
+      <form className="form">
+        <TextInput placeholder={'Nombre del producto'} />
+        <Select options={options} />
+        <Button value={'Agregar'} />
+      </form>
     </div>
   );
 };

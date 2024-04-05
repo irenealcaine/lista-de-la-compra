@@ -1,18 +1,13 @@
-.agregar-elemento {
+.iniciar-sesion {
   .form {
     width: 60%;
     margin: 0 auto;
+    min-width: 250px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    gap: 20px;
-
-    button {
-      width: 100%;
-      margin: 0;
-    }
+    gap: 20px
   }
 }

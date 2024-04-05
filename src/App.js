@@ -7,6 +7,7 @@ import Page1 from "./Pages/Page1/Page1";
 import Page2 from "./Pages/Page2/Page2";
 import Page3 from "./Pages/Page3/Page3";
 import Page4 from "./Pages/Page4/Page4";
+import IniciarSesion from "./Pages/IniciarSesion/IniciarSesion";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/agregar-elemento" element={<Page2 />} />
             <Route path="/perfil" element={<Page3 />} />
             <Route path="/page4" element={<Page4 />} />
+            <Route path="/iniciar-sesion" element={<IniciarSesion />} />
           </Routes>
         </Main>
       </BrowserRouter>
