@@ -8,23 +8,27 @@ import Page2 from "./Pages/Page2/Page2";
 import Page3 from "./Pages/Page3/Page3";
 import Page4 from "./Pages/Page4/Page4";
 import IniciarSesion from "./Pages/IniciarSesion/IniciarSesion";
+import ProtectedRoute from './Components/ProtectedRoute'
+import { AuthContextProvider } from './Context/AuthContext'
 
 function App() {
   return (
     <div className={`app`}>
-      <BrowserRouter>
-        <Main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="*" element={<NotFound />} />
-            <Route path="/lista-de-la-compra" element={<Page1 />} />
-            <Route path="/agregar-elemento" element={<Page2 />} />
-            <Route path="/perfil" element={<Page3 />} />
-            <Route path="/page4" element={<Page4 />} />
-            <Route path="/iniciar-sesion" element={<IniciarSesion />} />
-          </Routes>
-        </Main>
-      </BrowserRouter>
+      <AuthContextProvider>
+        <BrowserRouter>
+          <Main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="*" element={<NotFound />} />
+              <Route path="/lista-de-la-compra" element={<Page1 />} />
+              <Route path="/agregar-elemento" element={<ProtectedRoute><Page2 /></ProtectedRoute>} />
+              <Route path="/perfil" element={<Page3 />} />
+              <Route path="/page4" element={<Page4 />} />
+              <Route path="/iniciar-sesion" element={<IniciarSesion />} />
+            </Routes>
+          </Main>
+        </BrowserRouter>
+      </AuthContextProvider>
     </div>
   );
 }
