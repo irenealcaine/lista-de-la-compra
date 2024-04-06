@@ -4,15 +4,16 @@ import Checkbox from "../../Components/Checkbox/Checkbox";
 import { collection, onSnapshot, doc, updateDoc } from "firebase/firestore";
 import { db } from '../../Firebase/firebase-config'
 import "./Home.scss";
+import Loader from "../../Components/Loader/Loader";
 
 const Home = () => {
 
   const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
   useEffect(() => {
-    // setLoading(true)
+    setLoading(true)
     const unsub = onSnapshot(collection(db, 'productos'), (snapShot) => {
       let list = [];
       if (snapShot.docs.length > 0) {
@@ -22,7 +23,7 @@ const Home = () => {
               id: doc.id,
               ...doc.data()
             });
-            // setLoading(false)
+            setLoading(false)
 
             setData(list);
           },
@@ -31,7 +32,7 @@ const Home = () => {
           }
         );
       } else {
-        // setLoading(false)
+        setLoading(false)
         setError('Error')
       }
 
@@ -43,15 +44,12 @@ const Home = () => {
   }, []);
 
   const handleCheckboxChange = async (id, toBuy) => {
-    // Referencia al documento en Firebase
     const productRef = doc(db, 'productos', id);
 
-    // Actualiza el valor de `toBuy` en el documento
     await updateDoc(productRef, {
       toBuy: !toBuy
     });
 
-    // Opcional: actualizar el estado local si es necesario
     setData(data.map(item => item.id === id ? { ...item, toBuy: !toBuy } : item));
   };
 
@@ -77,6 +75,7 @@ const Home = () => {
       ))} */}
 
       {error && error}
+      {loading && <Loader />}
       {data.map((producto) => (
         <div key={producto.id} className="">
           <h2>{producto.category}</h2>
