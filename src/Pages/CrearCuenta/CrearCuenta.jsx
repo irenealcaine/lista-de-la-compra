@@ -1,12 +1,13 @@
+import './CrearCuenta.scss'
+
 import TextInput from '../../Components/TextInput/TextInput'
-import './IniciarSesion.scss'
 import Button from '../../Components/Button/Button'
 
 import React, { useState } from 'react'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 
-const IniciarSesion = () => {
+const CrearCuenta = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,17 +26,17 @@ const IniciarSesion = () => {
   };
 
   return (
-    <div className='iniciar-sesion'>
-      <h1>Iniciar sesión</h1>
+    <div className='crear-cuenta'>
+      <h1>Crear cuenta</h1>
       <form className='form' onSubmit={handleLogin}>
         <TextInput placeholder={'Correo electrónico'} onChange={(e) => setEmail(e.target.value)} />
         <TextInput type={'password'} placeholder={'Contraseña'} onChange={(e) => setPassword(e.target.value)} />
-        <Button type={'submit'} value={'Iniciar sesión'} />
+        <Button type={'submit'} value={'Crea cuenta'} />
         {error && <p className='error'>{error}</p>}
-        <p>¿No tienes cuenta? <Link to={'/crear-cuenta'}>Crear una</Link></p>
+        <p>¿Ya tienes cuenta? <Link to={'/iniciar-sesion'}>Inicia sesión</Link></p>
       </form>
     </div>
   )
 }
 
-export default IniciarSesion
+export default CrearCuenta

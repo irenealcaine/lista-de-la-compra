@@ -10,6 +10,7 @@ import Page4 from "./Pages/Page4/Page4";
 import IniciarSesion from "./Pages/IniciarSesion/IniciarSesion";
 import ProtectedRoute from './Components/ProtectedRoute'
 import { AuthContextProvider } from './Context/AuthContext'
+import CrearCuenta from "./Pages/CrearCuenta/CrearCuenta";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path="/perfil" element={<ProtectedRoute><Page3 /></ProtectedRoute>} />
               {/* <Route path="/page4" element={<Page4 />} /> */}
               <Route path="/iniciar-sesion" element={<IniciarSesion />} />
+              <Route path="/crear-cuenta" element={<CrearCuenta />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Main>

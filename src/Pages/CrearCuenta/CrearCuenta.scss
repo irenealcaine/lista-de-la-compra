@@ -1,0 +1,21 @@
+.crear-cuenta {
+  .form {
+    width: 60%;
+    margin: 0 auto;
+    min-width: 250px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    a {
+      text-decoration: underline;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+}
