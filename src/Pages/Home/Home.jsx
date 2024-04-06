@@ -1,13 +1,66 @@
+import { useEffect, useState } from "react";
 import Checkbox from "../../Components/Checkbox/Checkbox";
-import { products } from "../../Data/Products";
+// import { products } from "../../Data/Products";
+import { collection, onSnapshot, doc, updateDoc } from "firebase/firestore";
+import { db } from '../../Firebase/firebase-config'
 import "./Home.scss";
 
 const Home = () => {
+
+  const [data, setData] = useState([]);
+  // const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    // setLoading(true)
+    const unsub = onSnapshot(collection(db, 'productos'), (snapShot) => {
+      let list = [];
+      if (snapShot.docs.length > 0) {
+        snapShot.docs.forEach(
+          (doc) => {
+            list.push({
+              id: doc.id,
+              ...doc.data()
+            });
+            // setLoading(false)
+
+            setData(list);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      } else {
+        // setLoading(false)
+        setError('Error')
+      }
+
+    });
+
+    return () => {
+      unsub();
+    };
+  }, []);
+
+  const handleCheckboxChange = async (id, toBuy) => {
+    // Referencia al documento en Firebase
+    const productRef = doc(db, 'productos', id);
+
+    // Actualiza el valor de `toBuy` en el documento
+    await updateDoc(productRef, {
+      toBuy: !toBuy
+    });
+
+    // Opcional: actualizar el estado local si es necesario
+    setData(data.map(item => item.id === id ? { ...item, toBuy: !toBuy } : item));
+  };
+
+
   return (
     <div className="home">
       <h1>¿Qué hace falta?</h1>
 
-      {products.map((category) => (
+      {/* {products.map((category) => (
         <div key={category.id}>
           <h2>{category.title}</h2>
 
@@ -19,6 +72,16 @@ const Home = () => {
               </li>
             ))}
           </ul>
+
+        </div>
+      ))} */}
+
+      {error && error}
+      {data.map((producto) => (
+        <div key={producto.id} className="">
+          <h2>{producto.category}</h2>
+          <p>{producto.name}</p>
+          <Checkbox isChecked={producto.toBuy} onChange={() => handleCheckboxChange(producto.id, producto.toBuy)} />
 
         </div>
       ))}

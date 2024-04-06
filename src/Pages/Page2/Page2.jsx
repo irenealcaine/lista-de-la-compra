@@ -5,44 +5,41 @@ import { useNavigate } from 'react-router-dom';
 import "./Page2.scss";
 import { useState } from "react";
 
+import { db } from '../../Firebase/firebase-config';
+import { collection, addDoc } from "firebase/firestore";
+import { categories } from "../../Utils/Constants";
+
 const Page2 = () => {
 
-  const options = [
+  const defaultOption = [
     {
       label: 'Categoría',
       value: '',
       hidden: true
-    },
-    {
-      label: 'aaa',
-      value: 'aaa'
-    },
-    {
-      label: 'bbb',
-      value: 'bbb'
-    },
-    {
-      label: 'ccc',
-      value: 'ccc'
-    },
+    }
   ]
+
+  const options = defaultOption.concat(categories)
 
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
+  const [message, setMessage] = useState('');
   const navigate = useNavigate()
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
-      await addDoc(collection(db, "posts"), {
-        title: titleValue,
-        slug: slugValue,
-        content: value,
-        date: Timestamp.now().toDate()
+      await addDoc(collection(db, "productos"), {
+        name: name,
+        category: category,
+        toBuy: false
       });
-      setValue('');
+      setName('');
+      setCategory('');
+      setMessage('Mu bien')
       // navigate('/')
     } catch (error) {
-      console.error('Error al guardar el post:', error);
+      console.error('Error:', error);
     }
   };
 
@@ -60,8 +57,10 @@ const Page2 = () => {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         />
-        {console.log(category)}
-        <Button value={'Agregar'} onClick={handleSubmit} />
+
+        <Button value={'Agregar'} onClick={(e) => handleSubmit(e)} />
+
+        {message && message}
       </form>
     </div>
   );

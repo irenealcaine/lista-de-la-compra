@@ -1,9 +1,9 @@
 import React from 'react'
 import './Checkbox.scss'
 
-const Checkbox = ({ isChecked }) => {
+const Checkbox = ({ isChecked, onChange }) => {
   return (
-    <input type="checkbox" checked={isChecked} />
+    <input type="checkbox" checked={isChecked} onChange={onChange} />
   )
 }
 

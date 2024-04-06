@@ -26,3 +26,18 @@ export const navbarItems = [
   //   icon: <CgTrello />,
   // },
 ];
+
+export const categories = [
+  {
+    label: 'Esenciales',
+    value: 'esenciales'
+  },
+  {
+    label: 'Frutas',
+    value: 'frutas'
+  },
+  {
+    label: 'Verduras',
+    value: 'verduras'
+  },
+]
