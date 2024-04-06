@@ -1,11 +1,19 @@
 import React from 'react'
 import './Select.scss'
 
-const Select = ({ options, hidden }) => {
+const Select = ({ options, onChange }) => {
   return (
-    <select>
+    <select
+      onChange={onChange}
+    >
       {options.map((option) => (
-        <option key={option.value} value={option.value} hidden={option.hidden}>{option.label}</option>
+        <option
+          key={option.value}
+          value={option.value}
+          hidden={option.hidden}
+        >
+          {option.label}
+        </option>
       ))}
 
     </select>
