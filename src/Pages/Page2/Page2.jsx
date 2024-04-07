@@ -26,7 +26,6 @@ const Page2 = () => {
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate()
   const { user } = UserAuth()
 
 
@@ -54,7 +53,6 @@ const Page2 = () => {
       setName('');
       setCategory('');
       setMessage('Producto agregado correctamente');
-      // navigate('/');
     } catch (error) {
       console.error('Error:', error);
     }
