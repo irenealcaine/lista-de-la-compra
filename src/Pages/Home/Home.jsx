@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Checkbox from "../../Components/Checkbox/Checkbox";
-import { collection, doc, updateDoc, query, onSnapshot, getDoc } from "firebase/firestore";
+import { collection, doc, updateDoc, query, onSnapshot, getDoc, setDoc } from "firebase/firestore";
 import { db } from '../../Firebase/firebase-config'
 import "./Home.scss";
 import Loader from "../../Components/Loader/Loader";
@@ -13,6 +13,31 @@ const Home = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const { user } = UserAuth()
+
+  const defaultItems = [
+    { name: "Aceite de girasol", toBuy: false },
+    { name: "Sal", toBuy: true },
+  ];
+
+  const addDefaultItems = async () => {
+    if (!user?.uid) return;
+
+    const categoryDocRef = doc(db, "usuarios", user.uid, "categorias", "Esenciales");
+
+    try {
+      await setDoc(categoryDocRef, {
+        category: "Esenciales",
+        items: defaultItems
+      }, { merge: true });
+
+      // Recargar los datos después de añadir los elementos por defecto
+      // Puedes hacerlo re-ejecutando la lógica que carga los datos o redirigiendo al usuario
+
+    } catch (error) {
+      console.error("Error al agregar elementos por defecto:", error);
+      setError(error);
+    }
+  };
 
   useEffect(() => {
 
@@ -78,6 +103,11 @@ const Home = () => {
 
       {error && error}
       {loading && <Loader />}
+
+      {data.length === 0 && (
+        <button onClick={addDefaultItems}>Agregar Elementos Por Defecto</button>
+      )}
+
       <ul className="category-list">
         {data.map((category) => (
           <li key={category.id} className="category-item">
@@ -86,8 +116,8 @@ const Home = () => {
               {category.items.map((item) => (
                 <li key={item.id} className="product-item">
 
-                  <p>{item.name}</p>
                   <Checkbox isChecked={item.toBuy} onChange={() => handleCheckboxChange(category.id, item.id, item.toBuy)} />
+                  <p>{item.name}</p>
                 </li>
               ))}
             </ul>
