@@ -1,7 +1,6 @@
 import Button from "../../Components/Button/Button";
 import Select from "../../Components/Select/Select";
 import TextInput from "../../Components/TextInput/TextInput";
-import { useNavigate } from 'react-router-dom';
 import "./Page2.scss";
 import { useState } from "react";
 
@@ -28,36 +27,43 @@ const Page2 = () => {
   const [message, setMessage] = useState('');
   const { user } = UserAuth()
 
+  const handleReset = () => {
+    setName('')
+    setCategory('')
+  }
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (name && category) {
 
-    const userUID = user.uid;
-    const categoryDocRef = doc(db, "usuarios", userUID, "categorias", category);
-    try {
-      const docSnap = await getDoc(categoryDocRef);
+      const userUID = user.uid;
+      const categoryDocRef = doc(db, "usuarios", userUID, "categorias", category);
+      try {
+        const docSnap = await getDoc(categoryDocRef);
 
-      const newItem = { id: Date.now().toString(), name: name, toBuy: false };
+        const newItem = { id: Date.now().toString(), name: name, toBuy: false };
 
-      if (docSnap.exists()) {
-        await updateDoc(categoryDocRef, {
-          items: arrayUnion(newItem)
-        });
-      } else {
-        await setDoc(categoryDocRef, {
-          category: category,
-          items: [newItem]
-        });
+        if (docSnap.exists()) {
+          await updateDoc(categoryDocRef, {
+            items: arrayUnion(newItem)
+          });
+        } else {
+          await setDoc(categoryDocRef, {
+            category: category,
+            items: [newItem]
+          });
+        }
+        handleReset()
+        setMessage('Producto agregado correctamente');
+      } catch (error) {
+        console.error('Error:', error);
+        setMessage(error)
       }
-
-      setName('');
-      setCategory('');
-      setMessage('Producto agregado correctamente');
-    } catch (error) {
-      console.error('Error:', error);
+    } else {
+      setMessage('Tanto el nombre cómo la categoría del producto son obligatorios')
     }
   };
-
 
   return (
     <div className="agregar-elemento">

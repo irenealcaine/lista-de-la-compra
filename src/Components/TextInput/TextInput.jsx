@@ -8,6 +8,7 @@ const TextInput = ({ type, placeholder, onChange, value }) => {
       type={type}
       placeholder={placeholder}
       onChange={onChange}
+      required
     />
   )
 }

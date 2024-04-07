@@ -1,10 +1,12 @@
 import React from 'react'
 import './Select.scss'
 
-const Select = ({ options, onChange }) => {
+const Select = ({ options, onChange, value }) => {
   return (
     <select
+      value={value}
       onChange={onChange}
+      required
     >
       {options.map((option) => (
         <option
