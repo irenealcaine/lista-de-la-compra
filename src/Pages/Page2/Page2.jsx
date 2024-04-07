@@ -6,8 +6,10 @@ import "./Page2.scss";
 import { useState } from "react";
 
 import { db } from '../../Firebase/firebase-config';
-import { collection, addDoc } from "firebase/firestore";
+import { arrayUnion, doc, updateDoc, getDoc, setDoc } from "firebase/firestore";
 import { categories } from "../../Utils/Constants";
+
+import { UserAuth } from '../../Context/AuthContext'
 
 const Page2 = () => {
 
@@ -25,23 +27,39 @@ const Page2 = () => {
   const [category, setCategory] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate()
+  const { user } = UserAuth()
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const userUID = user.uid;
+    const categoryDocRef = doc(db, "usuarios", userUID, "categorias", category);
     try {
-      await addDoc(collection(db, "productos"), {
-        name: name,
-        category: category,
-        toBuy: false
-      });
+      const docSnap = await getDoc(categoryDocRef);
+
+      const newItem = { id: Date.now().toString(), name: name, toBuy: false };
+
+      if (docSnap.exists()) {
+        await updateDoc(categoryDocRef, {
+          items: arrayUnion(newItem)
+        });
+      } else {
+        await setDoc(categoryDocRef, {
+          category: category,
+          items: [newItem]
+        });
+      }
+
       setName('');
       setCategory('');
-      setMessage('Mu bien')
-      // navigate('/')
+      setMessage('Producto agregado correctamente');
+      // navigate('/');
     } catch (error) {
       console.error('Error:', error);
     }
   };
+
 
   return (
     <div className="agregar-elemento">

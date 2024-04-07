@@ -30,14 +30,14 @@ export const navbarItems = [
 export const categories = [
   {
     label: 'Esenciales',
-    value: 'esenciales'
+    value: 'Esenciales'
   },
   {
     label: 'Frutas',
-    value: 'frutas'
+    value: 'Frutas'
   },
   {
     label: 'Verduras',
-    value: 'verduras'
+    value: 'Verduras'
   },
 ]
