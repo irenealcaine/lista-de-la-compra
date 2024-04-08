@@ -6,6 +6,7 @@ import "./Home.scss";
 import Loader from "../../Components/Loader/Loader";
 import { UserAuth } from '../../Context/AuthContext'
 import { v4 as uuid } from 'uuid';
+import Button from "../../Components/Button/Button";
 
 
 const Home = () => {
@@ -102,7 +103,7 @@ const Home = () => {
       {loading && <Loader />}
 
       {data.length === 0 && (
-        <button onClick={addDefaultItems}>Agregar Elementos Por Defecto</button>
+        <Button onClick={addDefaultItems} value={'Agregar productos por defecto'} />
       )}
 
       <ul className="category-list">
