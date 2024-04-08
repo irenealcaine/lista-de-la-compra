@@ -16,20 +16,30 @@ const Home = () => {
   const [error, setError] = useState('')
   const { user } = UserAuth()
 
-  const defaultItems = [
+  const essentialDefaultItems = [
     { id: uuid(), name: "Aceite de girasol", toBuy: false },
-    { id: uuid(), name: "Sal", toBuy: true },
+    { id: uuid(), name: "Sal", toBuy: false },
+  ];
+
+  const fruitsDefaultItems = [
+    { id: uuid(), name: "Manzanas", toBuy: false },
+    { id: uuid(), name: "Peras", toBuy: false },
   ];
 
   const addDefaultItems = async () => {
     if (!user?.uid) return;
 
-    const categoryDocRef = doc(db, "usuarios", user.uid, "categorias", "Esenciales");
+    const essentialsDocRef = doc(db, "usuarios", user.uid, "categorias", "Esenciales");
+    const fruitsDocRef = doc(db, "usuarios", user.uid, "categorias", "Frutas");
 
     try {
-      await setDoc(categoryDocRef, {
+      await setDoc(essentialsDocRef, {
         category: "Esenciales",
-        items: defaultItems
+        items: essentialDefaultItems
+      }, { merge: true });
+      await setDoc(fruitsDocRef, {
+        category: "Frutas",
+        items: fruitsDefaultItems
       }, { merge: true });
     } catch (error) {
       console.error("Error al agregar elementos por defecto:", error);
@@ -102,10 +112,6 @@ const Home = () => {
       {error && error}
       {loading && <Loader />}
 
-      {data.length === 0 && (
-        <Button onClick={addDefaultItems} value={'Agregar productos por defecto'} />
-      )}
-
       <ul className="category-list">
         {data.map((category) => (
           <div>
@@ -129,6 +135,7 @@ const Home = () => {
         ))}
       </ul>
 
+      <Button onClick={addDefaultItems} value={'Agregar productos por defecto'} />
     </div>
   );
 };
