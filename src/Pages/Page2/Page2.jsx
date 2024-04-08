@@ -9,6 +9,7 @@ import { arrayUnion, doc, updateDoc, getDoc, setDoc } from "firebase/firestore";
 import { categories } from "../../Utils/Constants";
 
 import { UserAuth } from '../../Context/AuthContext'
+import { v4 as uuid } from 'uuid';
 
 const Page2 = () => {
 
@@ -42,7 +43,7 @@ const Page2 = () => {
       try {
         const docSnap = await getDoc(categoryDocRef);
 
-        const newItem = { id: Date.now().toString(), name: name, toBuy: false };
+        const newItem = { id: uuid(), name: name, toBuy: false };
 
         if (docSnap.exists()) {
           await updateDoc(categoryDocRef, {

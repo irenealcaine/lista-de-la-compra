@@ -5,6 +5,7 @@ import { db } from '../../Firebase/firebase-config'
 import "./Home.scss";
 import Loader from "../../Components/Loader/Loader";
 import { UserAuth } from '../../Context/AuthContext'
+import { v4 as uuid } from 'uuid';
 
 
 const Home = () => {
@@ -15,8 +16,8 @@ const Home = () => {
   const { user } = UserAuth()
 
   const defaultItems = [
-    { name: "Aceite de girasol", toBuy: false },
-    { name: "Sal", toBuy: true },
+    { id: uuid(), name: "Aceite de girasol", toBuy: false },
+    { id: uuid(), name: "Sal", toBuy: true },
   ];
 
   const addDefaultItems = async () => {
@@ -29,10 +30,6 @@ const Home = () => {
         category: "Esenciales",
         items: defaultItems
       }, { merge: true });
-
-      // Recargar los datos después de añadir los elementos por defecto
-      // Puedes hacerlo re-ejecutando la lógica que carga los datos o redirigiendo al usuario
-
     } catch (error) {
       console.error("Error al agregar elementos por defecto:", error);
       setError(error);
