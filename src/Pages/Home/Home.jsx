@@ -108,18 +108,24 @@ const Home = () => {
 
       <ul className="category-list">
         {data.map((category) => (
-          <li key={category.id} className="category-item">
-            <h2>{category.category}</h2>
-            <ul className="product-list">
-              {category.items.map((item) => (
-                <li key={item.id} className="product-item">
+          <div>
+            {category.items.length > 0
+              ? <li key={category.id} className="category-item">
+                <h2>{category.category}</h2>
+                <ul className="product-list">
+                  {category.items.map((item) => (
+                    <li key={item.id} className="product-item">
 
-                  <Checkbox isChecked={item.toBuy} onChange={() => handleCheckboxChange(category.id, item.id, item.toBuy)} />
-                  <p>{item.name}</p>
-                </li>
-              ))}
-            </ul>
-          </li>
+                      <Checkbox isChecked={item.toBuy} onChange={() => handleCheckboxChange(category.id, item.id, item.toBuy)} />
+                      <p>{item.name}</p>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+              : ''}
+
+          </div>
+
         ))}
       </ul>
 
