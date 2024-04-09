@@ -19,14 +19,14 @@
   }
 
   .content {
-    width: 60%;
+    width: 40%;
     padding: 30px 0;
     margin: 0 auto;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .main {
+  .auth {
     .content {
       width: 90%;
     }

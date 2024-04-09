@@ -1,8 +1,10 @@
 .iniciar-sesion {
   .form {
-    width: 60%;
+    width: 100%;
     margin: 0 auto;
     min-width: 250px;
+    max-width: 1000px;
+
 
     display: flex;
     flex-direction: column;
