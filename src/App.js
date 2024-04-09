@@ -11,24 +11,29 @@ import IniciarSesion from "./Pages/IniciarSesion/IniciarSesion";
 import ProtectedRoute from './Components/ProtectedRoute'
 import { AuthContextProvider } from './Context/AuthContext'
 import CrearCuenta from "./Pages/CrearCuenta/CrearCuenta";
+import AuthLayout from "./Layout/AuthLayout/AuthLayout";
 
 function App() {
   return (
     <div className={`app`}>
       <AuthContextProvider>
         <BrowserRouter>
-          <Main>
-            <Routes>
+          <Routes>
+            <Route element={<Main />}>
               <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
               <Route path="/lista-de-la-compra" element={<ProtectedRoute><Page1 /></ProtectedRoute>} />
               <Route path="/agregar-elemento" element={<ProtectedRoute><Page2 /></ProtectedRoute>} />
               <Route path="/perfil" element={<ProtectedRoute><Page3 /></ProtectedRoute>} />
               {/* <Route path="/page4" element={<Page4 />} /> */}
+              <Route path="*" element={<NotFound />} />
+            </Route>
+            <Route element={<AuthLayout />}>
+
               <Route path="/iniciar-sesion" element={<IniciarSesion />} />
               <Route path="/crear-cuenta" element={<CrearCuenta />} />
               <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Main>
+            </Route>
+          </Routes>
         </BrowserRouter>
       </AuthContextProvider>
     </div>
