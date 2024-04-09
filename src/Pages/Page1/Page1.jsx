@@ -51,7 +51,6 @@ const Page1 = () => {
       <h1>Lista de la compra</h1>
 
       {error && error}
-
       {loading && <Loader />}
 
       <ul className="category-list">
