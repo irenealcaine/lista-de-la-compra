@@ -16,39 +16,36 @@ const Home = () => {
   const [error, setError] = useState('')
   const { user } = UserAuth()
 
-  const essentialDefaultItems = [
-    { id: uuid(), name: "Aceite de girasol", toBuy: false },
-    { id: uuid(), name: "Sal", toBuy: false },
-  ];
+  const createItem = (name) => ({ id: uuid(), name, toBuy: false });
 
-  const fruitsDefaultItems = [
-    { id: uuid(), name: "Manzanas", toBuy: false },
-    { id: uuid(), name: "Peras", toBuy: false },
-  ];
-
-  const addDefaultItems = async () => {
+  const addCategoryItems = async (categoryName, items) => {
     if (!user?.uid) return;
 
-    const essentialsDocRef = doc(db, "usuarios", user.uid, "categorias", "Esenciales");
-    const fruitsDocRef = doc(db, "usuarios", user.uid, "categorias", "Frutas");
-
+    const categoryDocRef = doc(db, "usuarios", user.uid, "categorias", categoryName);
     try {
-      await setDoc(essentialsDocRef, {
-        category: "Esenciales",
-        items: essentialDefaultItems
-      }, { merge: true });
-      await setDoc(fruitsDocRef, {
-        category: "Frutas",
-        items: fruitsDefaultItems
+      await setDoc(categoryDocRef, {
+        category: categoryName,
+        items: items.map((itemName) => createItem(itemName)),
       }, { merge: true });
     } catch (error) {
-      console.error("Error al agregar elementos por defecto:", error);
+      console.error(`Error al agregar elementos por defecto en ${categoryName}:`, error);
       setError(error);
     }
   };
 
-  useEffect(() => {
+  const defaultItems = {
+    Esenciales: ["Aceite de oliva", "Aceite de girasol", "Sal", "Azúcar", "Huevos"],
+    Frutas: ["Manzanas", "Peras"],
+    Verduras: ["Judías", "Berenjenas", "Lechuga"],
+  };
 
+  const addDefaultItems = async () => {
+    for (const [categoryName, items] of Object.entries(defaultItems)) {
+      await addCategoryItems(categoryName, items);
+    }
+  };
+
+  useEffect(() => {
     if (!user?.uid) {
       setLoading(false);
       return;
@@ -74,11 +71,9 @@ const Home = () => {
       setLoading(false);
     });
 
-
     return () => {
       unsub();
     };
-
   }, [user?.uid]);
 
   const handleCheckboxChange = async (categoryId, itemId, currentToBuy) => {

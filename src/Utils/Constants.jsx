@@ -20,11 +20,6 @@ export const navbarItems = [
     slug: "perfil",
     icon: <FaRegUser />,
   },
-  // {
-  //   name: "Page 4",
-  //   slug: "page4",
-  //   icon: <CgTrello />,
-  // },
 ];
 
 export const categories = [
@@ -39,5 +34,49 @@ export const categories = [
   {
     label: 'Verduras',
     value: 'Verduras'
+  },
+  {
+    label: 'Carnes',
+    value: 'Carnes'
+  },
+  {
+    label: 'Pescados',
+    value: 'Pescados'
+  },
+  {
+    label: 'Lácteos',
+    value: 'Lácteos'
+  },
+  {
+    label: 'Conservas',
+    value: 'Conservas'
+  },
+  {
+    label: 'Despensa',
+    value: 'Despensa'
+  },
+  {
+    label: 'Salsas',
+    value: 'Salsas'
+  },
+  {
+    label: 'Especias',
+    value: 'Especias'
+  },
+  {
+    label: 'Mascotas',
+    value: 'Mascotas'
+  },
+  {
+    label: 'Limpieza',
+    value: 'Limpieza'
+  },
+  {
+    label: 'Baño',
+    value: 'Baño'
+  },
+  {
+    label: 'Otros',
+    value: 'Otros'
   },
 ]
