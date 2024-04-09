@@ -10,6 +10,8 @@ const Page1 = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [message, setMessage] = useState('')
+
   const { user } = UserAuth()
 
   useEffect(() => {
@@ -46,10 +48,19 @@ const Page1 = () => {
 
   }, [user?.uid]);
 
+  useEffect(() => {
+    if (data.every(category => category.items.every(item => item.toBuy == false))) {
+      setMessage('No hay items');
+    } else {
+      setMessage('');
+    }
+  }, [data]);
+
   return (
     <div className="page1">
       <h1>Lista de la compra</h1>
 
+      {message && message}
       {error && error}
       {loading && <Loader />}
 

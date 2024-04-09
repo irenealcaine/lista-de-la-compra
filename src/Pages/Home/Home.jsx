@@ -14,6 +14,7 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [message, setMessage] = useState('')
   const { user } = UserAuth()
 
   const createItem = (name) => ({ id: uuid(), name, toBuy: false });
@@ -109,12 +110,21 @@ const Home = () => {
     }
   };
 
+  useEffect(() => {
+    if (data.every(category => category.items.length === 0)) {
+      setMessage('No hay items');
+    } else {
+      setMessage('');
+    }
+  }, [data]); // Dependencias: este efecto se ejecuta solo cuando `data` cambia.
+
 
   return (
     <div className="home">
       <h1>¿Qué hace falta?</h1>
 
       {error && error}
+      {message && message}
       {loading && <Loader />}
 
       <ul className="category-list">
