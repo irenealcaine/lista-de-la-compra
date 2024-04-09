@@ -1,8 +1,10 @@
 .agregar-elemento {
   .form {
-    width: 60%;
+    width: 100%;
     min-width: 250px;
     margin: 0 auto;
+    max-width: 1000px;
+
 
     display: flex;
     flex-direction: column;

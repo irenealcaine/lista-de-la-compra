@@ -1,7 +1,43 @@
-.product-item {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+@import "src/Variables.scss";
 
+.page3 {
+  .category-list {
+    width: 80%;
+    margin: 0 auto 30px auto;
+    min-width: 250px;
+    max-width: 1000px;
+
+    .product-item {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 10px;
+      transition: $transition;
+
+      &:hover {
+        background-color: #f002;
+      }
+
+      .delete-button {
+        color: $red;
+        font-size: 25px;
+        cursor: pointer;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid transparent;
+        border-radius: 100px;
+
+        transition: $transition;
+
+        &:hover {
+          border: 2px solid $red;
+        }
+      }
+
+    }
+  }
 }

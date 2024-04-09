@@ -92,12 +92,12 @@ const Page3 = () => {
           <div>
             {category.items.length > 0
               ? <li key={category.id} className="category-item">
-                <h3>{category.category}</h3>
+                {/* <h3>{category.category}</h3> */}
                 <ul className="product-list">
                   {category.items.map((item) => (
                     <li key={item.id} className="product-item">
                       <p>{item.name}</p>
-                      <span onClick={() => handleDelete(category.id, item.id)}><MdDeleteOutline /></span>
+                      <span className="delete-button" onClick={() => handleDelete(category.id, item.id)}><MdDeleteOutline /></span>
 
                     </li>
                   ))}
