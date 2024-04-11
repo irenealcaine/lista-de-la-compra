@@ -99,6 +99,7 @@ const Perfil = () => {
 
       <h2>Correo electrónico</h2>
       <p>{user?.email}</p>
+      {console.log(user)}
 
       <h2>Borrar productos</h2>
       <ul className="category-list">
