@@ -1,24 +1,27 @@
 import { useContext, useEffect, useState } from "react";
-import Checkbox from "../../Components/Checkbox/Checkbox";
+import "./Home.scss";
+import { Link } from "react-router-dom";
+import { v4 as uuid } from 'uuid';
+
 import { collection, doc, updateDoc, query, onSnapshot, getDoc, setDoc } from "firebase/firestore";
 import { db } from '../../Firebase/firebase-config'
-import "./Home.scss";
-import Loader from "../../Components/Loader/Loader";
+
 import { UserAuth } from '../../Context/AuthContext'
-import { v4 as uuid } from 'uuid';
-import Button from "../../Components/Button/Button";
-import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../Context/darkModeContext";
 import { defaultItems } from "../../Utils/Constants";
 
+import Checkbox from "../../Components/Checkbox/Checkbox";
+import Loader from "../../Components/Loader/Loader";
+import Button from "../../Components/Button/Button";
+
 const Home = () => {
+  const { darkMode } = useContext(DarkModeContext);
+  const { user } = UserAuth()
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [message, setMessage] = useState(false)
-  const { darkMode } = useContext(DarkModeContext);
-  const { user } = UserAuth()
 
   const createItem = (name) => ({ id: uuid(), name, toBuy: false });
 
