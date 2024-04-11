@@ -9,6 +9,7 @@ import { v4 as uuid } from 'uuid';
 import Button from "../../Components/Button/Button";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../Context/darkModeContext";
+import { defaultItems } from "../../Utils/Constants";
 
 const Home = () => {
 
@@ -36,21 +37,7 @@ const Home = () => {
     }
   };
 
-  const defaultItems = {
-    Esenciales: ["Aceite de oliva", "Aceite de girasol", "Sal", "Azúcar", "Huevos"],
-    Frutas: ["Manzanas", "Plátanos", 'Tomates'],
-    Verduras: ["Berenjenas", "Lechuga"],
-    Carnes: ["Pechugas de pollo", "Lomo"],
-    Pescados: ["Merluza"],
-    Lácteos: ["Leche semidesnatada", "Queso rallado", "Queso en polvo"],
-    Conservas: ["Berberechos", "Mejillones"],
-    Despensa: ["Lentejas"],
-    Salsas: ["Mayonesa", "Ketchup", "Mostaza"],
-    Especias: ["Ajo en polvo", "Perejil", "Orégano"],
-    Mascotas: ["Comida de perro", "Comida de gato", "Arena de gato"],
-    Limpieza: ["Lejía"],
-    Baño: ["Crema de dientes", 'Gel', 'Champú'],
-  };
+
 
   const addDefaultItems = async () => {
     for (const [categoryName, items] of Object.entries(defaultItems)) {

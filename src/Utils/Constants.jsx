@@ -1,5 +1,3 @@
-import { PiAddressBookBold, PiAlarmBold } from "react-icons/pi";
-import { CgDatabase, CgTrello } from "react-icons/cg";
 import { CiViewList } from "react-icons/ci";
 import { FaPlus } from "react-icons/fa6";
 import { FaRegUser } from "react-icons/fa";
@@ -80,3 +78,19 @@ export const categories = [
     value: 'Otros'
   },
 ]
+
+export const defaultItems = {
+  Esenciales: ["Aceite de oliva", "Aceite de girasol", "Sal", "Azúcar", "Huevos"],
+  Frutas: ["Manzanas", "Plátanos", 'Tomates'],
+  Verduras: ["Berenjenas", "Lechuga"],
+  Carnes: ["Pechugas de pollo", "Lomo"],
+  Pescados: ["Merluza"],
+  Lácteos: ["Leche semidesnatada", "Queso rallado", "Queso en polvo"],
+  Conservas: ["Berberechos", "Mejillones"],
+  Despensa: ["Lentejas"],
+  Salsas: ["Mayonesa", "Ketchup", "Mostaza"],
+  Especias: ["Ajo en polvo", "Perejil", "Orégano"],
+  Mascotas: ["Comida de perro", "Comida de gato", "Arena de gato"],
+  Limpieza: ["Lejía"],
+  Baño: ["Crema de dientes", 'Gel', 'Champú'],
+};
