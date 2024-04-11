@@ -1,7 +1,7 @@
 import Button from "../../Components/Button/Button";
 import Select from "../../Components/Select/Select";
 import TextInput from "../../Components/TextInput/TextInput";
-import "./Page2.scss";
+import "./AgregarElemento.scss";
 import { useState } from "react";
 
 import { db } from '../../Firebase/firebase-config';
@@ -11,7 +11,7 @@ import { categories } from "../../Utils/Constants";
 import { UserAuth } from '../../Context/AuthContext'
 import { v4 as uuid } from 'uuid';
 
-const Page2 = () => {
+const AgregarElemento = () => {
 
   const defaultOption = [
     {
@@ -89,4 +89,4 @@ const Page2 = () => {
   );
 };
 
-export default Page2;
+export default AgregarElemento;

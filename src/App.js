@@ -7,7 +7,7 @@ import AuthLayout from "./Layout/AuthLayout/AuthLayout";
 import Home from "./Pages/Home/Home";
 import NotFound from "./Pages/NotFound/NotFound";
 import ListaDeLaCompra from "./Pages/ListaDeLaCompra/ListaDeLaCompra";
-import Page2 from "./Pages/Page2/Page2";
+import AgregarElemento from "./Pages/AgregarElemento/AgregarElemento";
 import Page3 from "./Pages/Page3/Page3";
 import IniciarSesion from "./Pages/IniciarSesion/IniciarSesion";
 import CrearCuenta from "./Pages/CrearCuenta/CrearCuenta";
@@ -24,7 +24,7 @@ function App() {
             <Route element={<Main />}>
               <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
               <Route path="/lista-de-la-compra" element={<ProtectedRoute><ListaDeLaCompra /></ProtectedRoute>} />
-              <Route path="/agregar-elemento" element={<ProtectedRoute><Page2 /></ProtectedRoute>} />
+              <Route path="/agregar-elemento" element={<ProtectedRoute><AgregarElemento /></ProtectedRoute>} />
               <Route path="/perfil" element={<ProtectedRoute><Page3 /></ProtectedRoute>} />
               <Route path="*" element={<NotFound />} />
             </Route>
