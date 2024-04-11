@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Checkbox from "../../Components/Checkbox/Checkbox";
 import { collection, doc, updateDoc, query, onSnapshot, getDoc, setDoc } from "firebase/firestore";
 import { db } from '../../Firebase/firebase-config'
@@ -7,6 +7,10 @@ import Loader from "../../Components/Loader/Loader";
 import { UserAuth } from '../../Context/AuthContext'
 import { v4 as uuid } from 'uuid';
 import Button from "../../Components/Button/Button";
+import { Link } from "react-router-dom";
+import { DarkModeContext } from "../../Context/darkModeContext";
+
+
 
 
 const Home = () => {
@@ -14,7 +18,8 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState(false)
+  const { darkMode } = useContext(DarkModeContext);
   const { user } = UserAuth()
 
   const createItem = (name) => ({ id: uuid(), name, toBuy: false });
@@ -112,26 +117,33 @@ const Home = () => {
 
   useEffect(() => {
     if (data.every(category => category.items.length === 0)) {
-      setMessage('No hay items');
+      setMessage(true);
     } else {
-      setMessage('');
+      setMessage(false);
     }
-  }, [data]); // Dependencias: este efecto se ejecuta solo cuando `data` cambia.
+  }, [data]);
 
 
   return (
     <div className="home">
       <h1>¿Qué hace falta?</h1>
 
-      {error && error}
-      {message && message}
       {loading && <Loader />}
+      <Loader />
+
+      {error && error}
+      {message &&
+        <div>
+          <p>Ups... parece que aquí no hay nada, prueba a darle al botón de aquí abajo para añadir unas cuantas cosas.</p>
+          <p>Podrás borrar los que no quieras <Link to={'/agregar-elemento'} className={`${darkMode ? "dark" : ""}`}>aquí</Link> o añadir más <Link to={'/perfil'} className={`${darkMode ? "dark" : ""}`}>aquí</Link>.</p>
+        </div>
+      }
 
       <ul className="category-list">
         {data.map((category) => (
-          <div>
+          <div key={category.id}>
             {category.items.length > 0
-              ? <li key={category.id} className="category-item">
+              ? <li className="category-item">
                 <h2>{category.category}</h2>
                 <ul className="product-list">
                   {category.items.map((item) => (

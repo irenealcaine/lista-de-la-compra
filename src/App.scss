@@ -13,8 +13,12 @@ ul {
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+  color: $dark-main;
+  font-weight: bold;
+
+  &.dark {
+    color: $main;
+  }
 }
 
 h1,
