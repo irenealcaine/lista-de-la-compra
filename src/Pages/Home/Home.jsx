@@ -129,7 +129,6 @@ const Home = () => {
       <h1>¿Qué hace falta?</h1>
 
       {loading && <Loader />}
-      <Loader />
 
       {error && error}
       {message &&
