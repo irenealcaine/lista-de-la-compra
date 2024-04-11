@@ -1,5 +1,5 @@
 import Button from "../../Components/Button/Button";
-import "./Page3.scss";
+import "./Perfil.scss";
 import { signOut } from "firebase/auth";
 import { auth } from '../../Firebase/firebase-config';
 import { UserAuth } from '../../Context/AuthContext'
@@ -12,7 +12,7 @@ import { DarkModeContext } from "../../Context/darkModeContext";
 
 
 
-const Page3 = () => {
+const Perfil = () => {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false)
@@ -85,7 +85,7 @@ const Page3 = () => {
 
 
   return (
-    <div className="page3">
+    <div className="perfil">
       <h1>Perfil</h1>
 
       <h2>Correo electrónico</h2>
@@ -124,4 +124,4 @@ const Page3 = () => {
   );
 };
 
-export default Page3;
+export default Perfil;
