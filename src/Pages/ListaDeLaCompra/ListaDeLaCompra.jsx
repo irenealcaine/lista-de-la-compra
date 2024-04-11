@@ -61,7 +61,7 @@ const ListaDeLaCompra = () => {
   }, [data]);
 
   return (
-    <div className="page1">
+    <div className="lista-de-la-compra">
       <h1>Lista de la compra</h1>
 
       {loading && <Loader />}
