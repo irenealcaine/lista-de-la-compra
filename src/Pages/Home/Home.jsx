@@ -37,8 +37,6 @@ const Home = () => {
     }
   };
 
-
-
   const addDefaultItems = async () => {
     for (const [categoryName, items] of Object.entries(defaultItems)) {
       await addCategoryItems(categoryName, items);
@@ -77,7 +75,6 @@ const Home = () => {
   }, [user?.uid]);
 
   const handleCheckboxChange = async (categoryId, itemId, currentToBuy) => {
-
     const categoryRef = doc(db, "usuarios", user.uid, "categorias", categoryId);
 
     try {
@@ -86,9 +83,7 @@ const Home = () => {
         const items = categorySnap.data().items.map(item =>
           item.id === itemId ? { ...item, toBuy: !currentToBuy } : item
         );
-
         await updateDoc(categoryRef, { items });
-
         setData(data.map(category =>
           category.id === categoryId ? { ...category, items } : category
         ));
@@ -97,6 +92,7 @@ const Home = () => {
       console.error("Error al actualizar el item:", error);
       setError(error);
     }
+
   };
 
   useEffect(() => {
@@ -106,7 +102,6 @@ const Home = () => {
       setMessage(false);
     }
   }, [data]);
-
 
   return (
     <div className="home">
@@ -125,24 +120,27 @@ const Home = () => {
       <ul className="category-list">
         {data.map((category) => (
           <div key={category.id}>
+
             {category.items.length > 0
+
               ? <li className="category-item">
                 <h2>{category.category}</h2>
                 <ul className="product-list">
                   {category.items.map((item) => (
                     <li key={item.id} className="product-item">
-
                       <Checkbox isChecked={item.toBuy} onChange={() => handleCheckboxChange(category.id, item.id, item.toBuy)} />
                       <p>{item.name}</p>
                     </li>
                   ))}
                 </ul>
               </li>
+
               : ''}
 
           </div>
 
         ))}
+
       </ul>
 
       <Button onClick={addDefaultItems} value={'Agregar productos por defecto'} />
