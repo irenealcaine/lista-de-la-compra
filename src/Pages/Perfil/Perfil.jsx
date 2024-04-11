@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Button from "../../Components/Button/Button";
+import Loader from "../../Components/Loader/Loader";
 
 import { signOut } from "firebase/auth";
 import { collection, doc, updateDoc, query, onSnapshot, getDoc } from "firebase/firestore";
@@ -91,6 +92,10 @@ const Perfil = () => {
   return (
     <div className="perfil">
       <h1>Perfil</h1>
+
+      {loading && <Loader />}
+
+      {error && error}
 
       <h2>Correo electrónico</h2>
       <p>{user?.email}</p>
