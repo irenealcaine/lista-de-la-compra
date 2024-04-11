@@ -1,16 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { db } from '../../Firebase/firebase-config'
 import { UserAuth } from '../../Context/AuthContext'
 import "./Page1.scss";
 import Loader from "../../Components/Loader/Loader";
+import { DarkModeContext } from "../../Context/darkModeContext";
+import { Link } from "react-router-dom";
 
 const Page1 = () => {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState(false)
+  const { darkMode } = useContext(DarkModeContext);
+
 
   const { user } = UserAuth()
 
@@ -50,9 +54,9 @@ const Page1 = () => {
 
   useEffect(() => {
     if (data.every(category => category.items.every(item => item.toBuy == false))) {
-      setMessage('No hay items');
+      setMessage(true);
     } else {
-      setMessage('');
+      setMessage(false);
     }
   }, [data]);
 
@@ -60,9 +64,15 @@ const Page1 = () => {
     <div className="page1">
       <h1>Lista de la compra</h1>
 
-      {message && message}
-      {error && error}
       {loading && <Loader />}
+
+      {error && error}
+      {message &&
+        <div>
+          <p>¡No hay nada que comprar!</p>
+          <p>Añade cosas a la lista de la compra <Link to={'/'} className={`${darkMode ? "dark" : ""}`}>aquí</Link>.</p>
+        </div>
+      }
 
       <ul className="category-list">
         {data.filter(category => category.items.some(item => item.toBuy)).map((category) => (

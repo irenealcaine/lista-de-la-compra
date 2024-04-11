@@ -10,9 +10,6 @@ import Button from "../../Components/Button/Button";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../Context/darkModeContext";
 
-
-
-
 const Home = () => {
 
   const [data, setData] = useState([]);
