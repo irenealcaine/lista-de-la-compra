@@ -1,15 +1,16 @@
+import "./AgregarElemento.scss";
+import { useState } from "react";
+import { v4 as uuid } from 'uuid';
+
 import Button from "../../Components/Button/Button";
 import Select from "../../Components/Select/Select";
 import TextInput from "../../Components/TextInput/TextInput";
-import "./AgregarElemento.scss";
-import { useState } from "react";
 
 import { db } from '../../Firebase/firebase-config';
 import { arrayUnion, doc, updateDoc, getDoc, setDoc } from "firebase/firestore";
-import { categories } from "../../Utils/Constants";
 
+import { categories } from "../../Utils/Constants";
 import { UserAuth } from '../../Context/AuthContext'
-import { v4 as uuid } from 'uuid';
 
 const AgregarElemento = () => {
 

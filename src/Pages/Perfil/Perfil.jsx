@@ -1,14 +1,18 @@
-import Button from "../../Components/Button/Button";
 import "./Perfil.scss";
-import { signOut } from "firebase/auth";
-import { auth } from '../../Firebase/firebase-config';
-import { UserAuth } from '../../Context/AuthContext'
 import { useContext, useEffect, useState } from "react";
-import { collection, doc, updateDoc, query, onSnapshot, getDoc, setDoc, deleteDoc } from "firebase/firestore";
-import { db } from '../../Firebase/firebase-config'
-import { MdDeleteOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
+
+import Button from "../../Components/Button/Button";
+
+import { signOut } from "firebase/auth";
+import { collection, doc, updateDoc, query, onSnapshot, getDoc } from "firebase/firestore";
+import { auth } from '../../Firebase/firebase-config';
+import { db } from '../../Firebase/firebase-config'
+
+import { UserAuth } from '../../Context/AuthContext'
 import { DarkModeContext } from "../../Context/darkModeContext";
+
+import { MdDeleteOutline } from "react-icons/md";
 
 
 
