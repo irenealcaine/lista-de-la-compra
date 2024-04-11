@@ -2,12 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { db } from '../../Firebase/firebase-config'
 import { UserAuth } from '../../Context/AuthContext'
-import "./Page1.scss";
+import "./ListaDeLaCompra.scss";
 import Loader from "../../Components/Loader/Loader";
 import { DarkModeContext } from "../../Context/darkModeContext";
 import { Link } from "react-router-dom";
 
-const Page1 = () => {
+const ListaDeLaCompra = () => {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false)
@@ -92,4 +92,4 @@ const Page1 = () => {
   );
 };
 
-export default Page1;
+export default ListaDeLaCompra;
