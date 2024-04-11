@@ -3,10 +3,13 @@ import "./Page3.scss";
 import { signOut } from "firebase/auth";
 import { auth } from '../../Firebase/firebase-config';
 import { UserAuth } from '../../Context/AuthContext'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { collection, doc, updateDoc, query, onSnapshot, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 import { db } from '../../Firebase/firebase-config'
 import { MdDeleteOutline } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { DarkModeContext } from "../../Context/darkModeContext";
+
 
 
 const Page3 = () => {
@@ -14,6 +17,8 @@ const Page3 = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const { darkMode } = useContext(DarkModeContext);
+
 
   const { user } = UserAuth()
 
@@ -83,16 +88,15 @@ const Page3 = () => {
     <div className="page3">
       <h1>Perfil</h1>
 
-      <p>Correo electrónico</p>
+      <h2>Correo electrónico</h2>
       <p>{user?.email}</p>
 
       <h2>Borrar productos</h2>
       <ul className="category-list">
         {data.map((category) => (
-          <div>
-            {category.items.length > 0
-              ? <li key={category.id} className="category-item">
-                {/* <h3>{category.category}</h3> */}
+          <div key={category.id}>
+            {category.items.length > 0 &&
+              <li className="category-item">
                 <ul className="product-list">
                   {category.items.map((item) => (
                     <li key={item.id} className="product-item">
@@ -103,11 +107,17 @@ const Page3 = () => {
                   ))}
                 </ul>
               </li>
-              : ''}
+            }
 
           </div>
 
         ))}
+        {data.every(category => category.items.length == 0) &&
+          <div>
+            <p>¡No hay nada que borrar!</p>
+            <p>Puedes añadir productos <Link to={'/agregar-elemento'} className={`${darkMode ? "dark" : ""}`}>aquí</Link>.</p>
+          </div>
+        }
       </ul>
       <Button onClick={() => signOut(auth)} value={'Cerrar sesión'} />
     </div>
